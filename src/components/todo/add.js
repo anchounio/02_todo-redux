@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Task } from "../../models/task";
 import { createTask } from "../../redux/tasks/action-creators";
+import { set } from "../../services/api";
 
 export function Add() {
   const dispatch = useDispatch();
   const addTask = (newTask) => {
-    dispatch(createTask(newTask));
+    set(newTask).then((resp) => dispatch(createTask(resp.data)));
   };
   const [newTask, setNewTask] = useState(new Task());
 

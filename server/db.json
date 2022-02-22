@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Update json-server",
       "responsible": "Ernesto",
-      "isCompleted": false
+      "isCompleted": true
     }
   ]
 }

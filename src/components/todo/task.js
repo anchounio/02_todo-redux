@@ -1,15 +1,22 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeTask, updateTask } from "../../redux/tasks/action-creators";
+import { remove, update } from "../../services/api";
 
 export function Task({ task }) {
   const dispatch = useDispatch();
 
   const deleteTask = (task) => {
-    dispatch(removeTask(task));
+    remove(task.id).then((resp) => {
+      if (resp.statusText.toLowerCase() === "ok") {
+        dispatch(removeTask(task));
+      }
+    });
   };
   const toggleTask = (task) => {
-    dispatch(updateTask(task));
+    update(task).then((resp) => {
+      dispatch(updateTask(resp.data));
+    });
   };
 
   function handleClick() {

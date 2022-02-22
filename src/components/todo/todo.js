@@ -4,7 +4,7 @@ import { Task } from "./task";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadTasks } from "../../redux/tasks/action-creators";
-import { TASKS } from "../../models/tasks.data";
+import { getAll } from "../../services/api";
 
 export function ToDo() {
   const tasks = useSelector((state) => state.tasks);
@@ -12,8 +12,11 @@ export function ToDo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadTasks(TASKS));
-  }, []);
+    getAll().then((resp) => {
+      console.log(resp);
+      dispatch(loadTasks(resp.data));
+    });
+  }, [dispatch]);
 
   return (
     <>

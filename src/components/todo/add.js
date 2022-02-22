@@ -1,9 +1,14 @@
 /* eslint-disable react/no-typos */
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Task } from "../../models/task";
+import { createTask } from "../../redux/tasks/action-creators";
 
 export function Add() {
-  const addTask = () => {};
+  const dispatch = useDispatch();
+  const addTask = (newTask) => {
+    dispatch(createTask(newTask));
+  };
   const [newTask, setNewTask] = useState(new Task());
 
   const handleSubmit = (ev) => {

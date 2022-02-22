@@ -3,7 +3,7 @@ import * as actions from "../redux/counter/action-creators";
 
 export function Counter() {
   // console.log(useStore());
-  const counterState = useSelector((state) => {
+  const counter = useSelector((state) => {
     return state.counter;
   });
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export function Counter() {
     <div>
       <span>Counter </span>
       {/* <span>{useStore().getState().counter}</span> */}
-      <span>{counterState}</span>
+      <span>{counter}</span>
       <div>
         <button
           onClick={() => {

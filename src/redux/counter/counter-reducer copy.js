@@ -1,15 +1,17 @@
 import { actionTypes } from "./action-types";
 
-const initialState = 0;
+const initialState = {
+  counter: 0,
+};
 
 export function counterReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.increment:
-      return state + action.payload;
+      return { ...state, counter: state.counter + action.payload };
     case actionTypes.decrement:
-      return state - action.payload;
+      return { ...state, counter: state.counter - action.payload };
     case actionTypes.reset:
-      return action.payload;
+      return { ...state, counter: action.payload };
     default:
       return state;
   }

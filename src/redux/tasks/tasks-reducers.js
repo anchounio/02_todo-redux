@@ -1,27 +1,19 @@
 import { actionTypes } from "./action-types";
 
-const initialState = {
-  tasks: [],
-};
+const initialState = [];
 
 export const tasksReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.loadTasks:
-      return { ...state, tasks: action.payload };
+      return [...action.payload];
     case actionTypes.createTask:
-      return { ...state, tasks: [...state.tasks, action.payload] };
+      return [...state, action.payload];
     case actionTypes.removeTask:
-      return {
-        ...state,
-        tasks: state.tasks.filter((item) => item.id !== action.payload.id),
-      };
+      return state.filter((item) => item.id !== action.payload.id);
     case actionTypes.updateTask:
-      return {
-        ...state,
-        tasks: state.tasks.map((item) =>
-          item.id === action.payload.id ? action.payload : item
-        ),
-      };
+      return state.map((item) =>
+        item.id === action.payload.id ? action.payload : item
+      );
     default:
       return state;
   }

@@ -1,14 +1,23 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeTask, updateTask } from "../../redux/tasks/action-creators";
 
 export function Task({ task }) {
-  const deleteTask = () => {};
-  const updateTask = () => {};
+  const dispatch = useDispatch();
+
+  const deleteTask = (task) => {
+    dispatch(removeTask(task));
+  };
+  const toggleTask = (task) => {
+    dispatch(updateTask(task));
+  };
+
   function handleClick() {
     deleteTask(task);
   }
 
   function handleChange() {
-    updateTask(task);
+    toggleTask({ ...task, isCompleted: !task.isCompleted });
   }
 
   return (

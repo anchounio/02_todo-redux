@@ -1,7 +1,8 @@
-import { createStore, combineReducers, compose } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { counterReducer } from "./counter/counter-reducer";
 import { tasksReducer } from "./tasks/tasks-reducers";
+import thunk from "redux-thunk";
 
 // const [state, dispatch] = useReducer(myReducere)
 
@@ -17,24 +18,28 @@ export const tasksStore = createStore(
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-/* export const store = createStore(
+export const store = createStore(
   combineReducers({
     counter: counterReducer,
     tasks: tasksReducer,
   }),
-  composeEnhancer()
-); */
+  composeEnhancer(applyMiddleware(thunk))
+);
 
-const preloadedState = {
-  counter: 0,
-  tasks: [],
-};
+// const preloadedState = {
+//   counter: 0,
+//   tasks: [],
+// };
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    tasks: tasksReducer,
-  },
-  enhancers: composeEnhancer,
-  preloadedState,
-});
+// export const store = configureStore({
+//   reducer: {
+//     counter: counterReducer,
+//     tasks: tasksReducer,
+//   },
+//   enhancers: composeEnhancer,
+//   preloadedState,
+//   /* middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       thunk: {},
+//     }), */
+// });

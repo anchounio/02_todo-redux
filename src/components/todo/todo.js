@@ -12,8 +12,8 @@ export function ToDo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadTasks(TASKS));
-  }, []);
+    dispatch(loadTasks());
+  }, [dispatch]);
 
   return (
     <>

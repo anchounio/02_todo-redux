@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export function Detail() {
-    const { id } = useParams();
-    return (
-        <>
-            <h2>Página de detalle</h2>
-            <p>Tarea {id}</p>
-        </>
-    );
+  const { id } = useParams();
+  return (
+    <>
+      <h2>Página de detalle</h2>
+      <p>Robot {id}</p>
+    </>
+  );
 }

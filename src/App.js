@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import { Counter } from "./components/counter";
+//import { Counter } from "./components/counter";
 import "./App.css";
 import { ToDo } from "./components/todo/todo";
 
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+
         <ToDo />
       </header>
     </div>

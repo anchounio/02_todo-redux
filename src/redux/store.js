@@ -1,7 +1,7 @@
 import { createStore, combineReducers, compose } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { counterReducer } from "./counter/counter-reducer";
-import { tasksReducer } from "./tasks/tasks-reducers";
+//import { counterReducer } from "./counter/counter-reducer";
+import { robotsReducer } from "./robots/robots-reducers";
 
 // const [state, dispatch] = useReducer(myReducere)
 
@@ -26,14 +26,12 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 ); */
 
 const preloadedState = {
-  counter: 0,
-  tasks: [],
+  robots: [],
 };
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    tasks: tasksReducer,
+    robots: robotsReducer,
   },
   enhancers: composeEnhancer,
   preloadedState,
